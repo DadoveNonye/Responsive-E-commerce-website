@@ -102,27 +102,23 @@ const showCarth6 = document.querySelector(".show-cart-h6");
 addCartBtn.addEventListener("click", calcOrder);
 function calcOrder() {
   zero.value = count;
-  document.querySelector(".new-amount").textContent = `$${newAmt * count}`;
-  if (!count == 0) {
-    // classList.remove("show-cart-h6");
-    document.querySelector(".show-cart-h6").style.display = "none";
-    let html = `<div class="checkoutDiv">
-    <p>${productName}</p>
-    <h3>$${newAmt} * ${count} = $${newAmt * count} </h3>
-    <button class="checkoutBtn">Checkout</button>
-    </div>`;
-    showCarth6.insertAdjacentHTML("afterend", html);
-    addCartBtn.disabled = "true";
-    addCartBtn.classList.add("removeCursor");
-  }
+
+  showCarth6.innerHTML = `
+  <div>
+  <div class="checkout-div">
+              <img src="./images/image-product-1-thumbnail.jpg" alt="">
+              <p>Fall Limited Edition Sneakers $${125}.00 x ${count} 
+              <span>$${newAmt * count}.00</span>
+              </p>
+              </div>
+              <div class="checkBtn">
+              <button class="checkoutBtn">Checkout</button>
+            </div>
+            </div>
+            `;
 }
-calcOrder();
+
 cart.addEventListener("click", function () {
   cartShown.classList.toggle("show-cartt");
   cartShown.classList.add("transition");
 });
-// const showCart = (document.querySelector(
-//   ".show-cart-h6"
-// ).textContent = `${productName}`);
-
-console.log(showCarth6);
